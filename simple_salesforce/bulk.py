@@ -212,7 +212,7 @@ class SFBulkType:
             if len(data) >= 10000 and batch_size > 10000:
                 batch_size = 10000
             pool = concurrent.futures.ThreadPoolExecutor()
-
+            print("Creating job: ", operation)
             job = self._create_job(operation=operation,
                                    use_serial=use_serial,
                                    external_id_field=external_id_field)
@@ -224,7 +224,7 @@ class SFBulkType:
 
             multi_thread_worker = partial(self.worker, operation=operation)
             list_of_results = pool.map(multi_thread_worker, batches)
-
+            print("List of results: ", list_of_results)
             results = [i for sublist in list_of_results for i in sublist]
 
             self._close_job(job_id=job['id'])
