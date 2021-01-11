@@ -216,12 +216,13 @@ class SFBulkType:
             job = self._create_job(operation=operation,
                                    use_serial=use_serial,
                                    external_id_field=external_id_field)
+            print("JOB: ", job)
             batches = [
                 self._add_batch(job_id=job['id'], data=i, operation=operation)
                 for i in
                 [data[i * batch_size:(i + 1) * batch_size]
                  for i in range((len(data) // batch_size + 1))] if i]
-
+            print("BATCHES: ", batches)
             multi_thread_worker = partial(self.worker, operation=operation)
             list_of_results = pool.map(multi_thread_worker, batches)
             print("List of results: ", list_of_results)
