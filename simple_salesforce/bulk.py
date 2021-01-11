@@ -99,7 +99,7 @@ class SFBulkType:
             payload['externalIdFieldName'] = external_id_field
 
         url = "{}{}".format(self.bulk_url, 'job')
-
+        print("URL BEING CALLED IN POST: ", url)
         result = call_salesforce(url=url, method='POST', session=self.session,
                                  headers=self.headers,
                                  data=json.dumps(payload))
