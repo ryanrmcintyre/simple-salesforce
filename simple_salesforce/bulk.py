@@ -107,6 +107,7 @@ class SFBulkType:
                                  headers=self.headers,
                                  data=json.dumps(payload))
         print("RESULT: ", result)
+        print("RESULT JSON: ", result.json(object_pairs_hook=OrderedDict))
         return result.json(object_pairs_hook=OrderedDict)
 
     def _close_job(self, job_id):
