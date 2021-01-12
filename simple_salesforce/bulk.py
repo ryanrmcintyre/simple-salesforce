@@ -221,6 +221,7 @@ class SFBulkType:
             job = self._create_job(operation=operation,
                                    use_serial=use_serial,
                                    external_id_field=external_id_field)
+            print("WE HURR")
             print("JOB: ", job)
             batches = [
                 self._add_batch(job_id=job['id'], data=i, operation=operation)
