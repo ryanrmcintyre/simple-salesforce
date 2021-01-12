@@ -81,7 +81,8 @@ def call_salesforce(url, method, session, headers, **kwargs):
     print("METHOD: ", method)
     print("URL : ", url)
     result = session.request(method, url, headers=headers, **kwargs)
-
+    print("RESULT IN CALL SALESFORCE")
+    print(result)
     if result.status_code >= 300:
         exception_handler(result)
 
