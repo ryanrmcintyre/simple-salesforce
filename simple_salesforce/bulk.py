@@ -100,6 +100,9 @@ class SFBulkType:
 
         url = "{}{}".format(self.bulk_url, 'job')
         print("URL BEING CALLED IN POST: ", url)
+        print("HEADERS: ", self.headers)
+        print("SESSION: ", self.session)
+        print("DATA: ", json.dumps(payload))
         result = call_salesforce(url=url, method='POST', session=self.session,
                                  headers=self.headers,
                                  data=json.dumps(payload))
