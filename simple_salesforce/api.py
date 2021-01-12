@@ -505,6 +505,7 @@ class Salesforce:
         print("API CALL SALESFORCE")
         print("METHOD: ", method)
         print("HEADERS: ", headers)
+        print("URL: ", url)
         result = self.session.request(
             method, url, headers=headers, **kwargs)
 
