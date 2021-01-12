@@ -244,6 +244,11 @@ class Salesforce:
 
         if name == 'bulk':
             # Deal with bulk API functions
+            print('IN BULK')
+            print('SESSION_ID: ', self.session_id)
+            print('SESSION: ', self.session)
+            print('PROXIES: ', self.proxies)
+            print('BULK_URL: ', self.bulk_url)
             return SFBulkHandler(self.session_id, self.bulk_url, self.proxies,
                                  self.session)
 
