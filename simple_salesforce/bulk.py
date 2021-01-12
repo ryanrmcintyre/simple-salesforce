@@ -103,6 +103,7 @@ class SFBulkType:
         result = call_salesforce(url=url, method='POST', session=self.session,
                                  headers=self.headers,
                                  data=json.dumps(payload))
+        print("RESULT: ", result)
         return result.json(object_pairs_hook=OrderedDict)
 
     def _close_job(self, job_id):
