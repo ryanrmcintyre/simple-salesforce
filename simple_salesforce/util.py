@@ -80,6 +80,7 @@ def call_salesforce(url, method, session, headers, **kwargs):
     print("HEADERS: ", additional_headers)
     print("METHOD: ", method)
     print("URL : ", url)
+    print("KWARGS: ", **kwargs)
     result = session.request(method, url, headers=headers, **kwargs)
 
     if result.status_code >= 300:
