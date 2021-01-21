@@ -370,6 +370,7 @@ class Salesforce:
         """
         url = self.base_url + ('queryAll/' if include_deleted else 'query/')
         params = {'q': query}
+        print("URL IS: ", url)
         # `requests` will correctly encode the query string passed as `params`
         result = self._call_salesforce('GET', url, name='query',
                                        params=params, **kwargs)
