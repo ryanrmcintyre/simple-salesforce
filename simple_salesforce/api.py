@@ -49,6 +49,7 @@ class Salesforce:
             domain=None,
             consumer_key=None,
             privatekey_file=None,
+            mockhttp=None,
             ):
         """Initialize the instance with the given parameters.
 
@@ -100,6 +101,7 @@ class Salesforce:
         self.domain = domain
         self.session = session or requests.Session()
         self.proxies = self.session.proxies
+        self.mockhttp = mockhttp or False
         # override custom session proxies dance
         if proxies is not None:
             if not session:
@@ -180,16 +182,16 @@ class Salesforce:
             'Authorization': 'Bearer ' + self.session_id,
             'X-PrettyPrint': '1'
             }
-
-        self.base_url = ('https://{instance}/services/data/v{version}/'
+        protocol = if self.mockhttp is True then "http" else "https"
+        self.base_url = ('{protocol}://{instance}/services/data/v{version}/'
                          .format(instance=self.sf_instance,
                                  version=self.sf_version))
-        self.apex_url = ('https://{instance}/services/apexrest/'
+        self.apex_url = ('{protocol}://{instance}/services/apexrest/'
                          .format(instance=self.sf_instance))
-        self.bulk_url = ('https://{instance}/services/async/{version}/'
+        self.bulk_url = ('{protocol}://{instance}/services/async/{version}/'
                          .format(instance=self.sf_instance,
                                  version=self.sf_version))
-        self.metadata_url = ('https://{instance}/services/Soap/m/{version}/'
+        self.metadata_url = ('{protocol}://{instance}/services/Soap/m/{version}/'
                              .format(instance=self.sf_instance,
                                      version=self.sf_version))
 
