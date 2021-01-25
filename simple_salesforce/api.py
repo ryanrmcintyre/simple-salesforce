@@ -182,7 +182,7 @@ class Salesforce:
             'Authorization': 'Bearer ' + self.session_id,
             'X-PrettyPrint': '1'
             }
-        protocol = if self.mockhttp is True then "http" else "https"
+        protocol = "http" if self.mockhttp is True else "https"
         self.base_url = ('{protocol}://{instance}/services/data/v{version}/'
                          .format(instance=self.sf_instance,
                                  version=self.sf_version))
