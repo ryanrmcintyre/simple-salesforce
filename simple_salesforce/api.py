@@ -516,9 +516,9 @@ class Salesforce:
         sforce_limit_info = result.headers.get('Sforce-Limit-Info')
         if sforce_limit_info:
             self.api_usage = self.parse_api_usage(sforce_limit_info)
-        print("RESPONSE: ", response.status_code)
-        print("RESPONSE TEXT: ", response.text)
-        print("RESPONSE CONTENT: ", response.content)
+        print("RESPONSE: ", result.status_code)
+        print("RESPONSE TEXT: ", result.text)
+        print("RESPONSE CONTENT: ", result.content)
         return result
 
     @staticmethod
